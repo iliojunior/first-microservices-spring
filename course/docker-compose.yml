@@ -1,0 +1,14 @@
+version: '3.2'
+
+services:
+  course:
+    build: .
+    networks:
+      - microservice
+    environment:
+      - EUREKA_SERVER_HOSTNAME=discovery
+      - EUREKA_SERVER_PORT=8081
+
+networks:
+  microservice:
+    external: true

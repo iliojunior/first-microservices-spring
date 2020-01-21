@@ -1,0 +1,32 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: course
+  jmx:
+    enabled: false
+  datasource:
+    url: jdbc:h2:file:./course.db
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+
+eureka:
+  instance:
+    server-hostname: ${EUREKA_SERVER_HOSTNAME:localhost}
+    server-port: ${EUREKA_SERVER_PORT:8081}
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.server-hostname}:${eureka.instance.server-port}/eureka/
+    fetch-registry: true
+    register-with-eureka: true
